@@ -1,5 +1,7 @@
 function spawn_bombs(_count)
 {
+	var spawned_count = 0;
+
     for (var i = 0; i < _count; i++)
     {
 	    var pos = find_spawn_position(obj_bomb);
@@ -15,5 +17,9 @@ function spawn_bombs(_count)
             "Instances",
             obj_bomb
         );
+
+		spawned_count += 1;
     }
+
+	return spawned_count;
 }

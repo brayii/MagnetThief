@@ -9,3 +9,4 @@ if (!variable_global_exists("high_score"))
 global.last_score = 0;
 
 scrap_needed = spawn_wave(wave);
+wave_active = (scrap_needed > 0);
