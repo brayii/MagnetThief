@@ -1,4 +1,4 @@
-health -= 1;
+player_health -= 1;
 
 instance_create_layer(
 	other.x,

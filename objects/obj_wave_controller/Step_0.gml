@@ -1,10 +1,16 @@
 if (scrap_needed <= 0)
 {
-    //show_message("Wave Complete!");
+	with (obj_scrap)
+	{
+		instance_destroy();
+	}
 
-    wave += 1;
-    scrap_needed = 10 + wave * 2;
-	
-	spawn_wave(wave);
+	with (obj_bomb)
+	{
+		instance_destroy();
+	}
+
+	wave += 1;
+	scrap_needed = spawn_wave(wave);
 }
 

@@ -28,6 +28,25 @@ if(move_x !=0 || move_y != 0)
 	}
 }
 
+// Keep the player's collision mask fully inside the room.
+if (bbox_left < 0)
+{
+	x -= bbox_left;
+}
+else if (bbox_right >= room_width)
+{
+	x -= bbox_right - (room_width - 1);
+}
+
+if (bbox_top < 0)
+{
+	y -= bbox_top;
+}
+else if (bbox_bottom >= room_height)
+{
+	y -= bbox_bottom - (room_height - 1);
+}
+
 if (keyboard_check(vk_space))
 {
 	with (obj_scrap)
@@ -70,9 +89,15 @@ if (keyboard_check(vk_space))
 	game_restart();
 }*/
 
-if(health <= 0)
+if(player_health <= 0)
 {
-	//show_message("Game Over");
-	//game_restart();
+	var wave_controller = instance_find(obj_wave_controller, 0);
+
+	if (wave_controller != noone)
+	{
+		global.last_score = wave_controller.run_score;
+		global.high_score = max(global.high_score, global.last_score);
+	}
+
 	room_goto(rm_gameover);
 }

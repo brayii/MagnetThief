@@ -1,5 +1,11 @@
-score = 0;
+run_score = 0;
 wave = 1;
-scrap_needed = 10;
 
-spawn_wave(wave);
+if (!variable_global_exists("high_score"))
+{
+	global.high_score = 0;
+}
+
+global.last_score = 0;
+
+scrap_needed = spawn_wave(wave);
